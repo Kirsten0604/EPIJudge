@@ -12,9 +12,15 @@ def zero_one_random():
 
 
 def uniform_random(lower_bound, upper_bound):
-    # TODO - you fill in here.
-    return 0
-
+    number_of_outcomes = upper_bound - lower_bound + 1
+    while True:
+        result, i = 0, 0
+        while (1 << i) < number_of_outcomes:
+            result = (result << 1) | zero_one_random()
+            i += 1
+        if result < number_of_outcomes:
+            break
+    return result + lower_bound
 
 @enable_executor_hook
 def uniform_random_wrapper(executor, lower_bound, upper_bound):
@@ -31,7 +37,8 @@ def uniform_random_wrapper(executor, lower_bound, upper_bound):
 
 
 if __name__ == '__main__':
-    exit(
-        generic_test.generic_test_main("uniform_random_number.py",
-                                       'uniform_random_number.tsv',
-                                       uniform_random_wrapper))
+    # exit(
+    #     generic_test.generic_test_main("uniform_random_number.py",
+    #                                    'uniform_random_number.tsv',
+    #                                    uniform_random_wrapper))
+    print(uniform_random(2, 7))
