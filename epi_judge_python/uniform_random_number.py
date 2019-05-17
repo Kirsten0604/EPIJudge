@@ -37,8 +37,7 @@ def uniform_random_wrapper(executor, lower_bound, upper_bound):
 
 
 if __name__ == '__main__':
-    # exit(
-    #     generic_test.generic_test_main("uniform_random_number.py",
-    #                                    'uniform_random_number.tsv',
-    #                                    uniform_random_wrapper))
-    print(uniform_random(2, 7))
+    exit(
+        generic_test.generic_test_main("uniform_random_number.py",
+                                       'uniform_random_number.tsv',
+                                       uniform_random_wrapper))
