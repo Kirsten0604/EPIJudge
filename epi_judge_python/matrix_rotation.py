@@ -2,17 +2,26 @@ from test_framework import generic_test
 
 
 def rotate_matrix(square_matrix):
-    # TODO - you fill in here.
-    return
-
+    matrix_size = len(square_matrix) - 1
+    for i in range(len(square_matrix) // 2):
+        for j in range(i, matrix_size - i):
+            (square_matrix[i][j], square_matrix[~j][i], square_matrix[~i][~j], square_matrix[j][~i]) = (square_matrix[~j][i], square_matrix[~i][~j], square_matrix[j][~i], square_matrix[i][j])
 
 def rotate_matrix_wrapper(square_matrix):
     rotate_matrix(square_matrix)
     return square_matrix
 
+A = [[1, 2, 3, 4],
+     [5, 6, 7, 8],
+     [9, 10, 11, 12],
+     [13, 14, 15, 16]]
 
-if __name__ == '__main__':
-    exit(
-        generic_test.generic_test_main("matrix_rotation.py",
-                                       'matrix_rotation.tsv',
-                                       rotate_matrix_wrapper))
+print(A)
+rotate_matrix(A)
+print(A)
+
+# if __name__ == '__main__':
+#     exit(
+#         generic_test.generic_test_main("matrix_rotation.py",
+#                                        'matrix_rotation.tsv',
+#                                        rotate_matrix_wrapper))
